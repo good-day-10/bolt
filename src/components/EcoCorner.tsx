@@ -113,35 +113,39 @@ function EcoCard({ creature, onClick }: { creature: Creature; onClick: () => voi
   const Icon = isCrab ? Bug : Leaf;
 
   return (
-    <button
-      ref={ref as React.RefObject<HTMLButtonElement>}
-      onClick={onClick}
-      className={`reveal ${visible ? 'is-visible' : ''} group flex flex-col overflow-hidden hand-border bg-paper-50 text-left shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl`}
+    <div
+      ref={ref}
+      className={`reveal ${visible ? 'is-visible' : ''}`}
     >
-      <div className="relative overflow-hidden">
-        <img
-          src={creature.img}
-          alt={creature.name}
-          loading="lazy"
-          className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-        <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-paper-50/90 px-3 py-1 text-xs font-medium text-moss-600 backdrop-blur-sm">
-          <Icon className="h-3.5 w-3.5" strokeWidth={1.8} />
-          {creature.tag}
+      <button
+        onClick={onClick}
+        className="group flex h-full w-full flex-col overflow-hidden hand-border bg-paper-50 text-left shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+      >
+        <div className="relative overflow-hidden">
+          <img
+            src={creature.img}
+            alt={creature.name}
+            loading="lazy"
+            className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+          <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-paper-50/90 px-3 py-1 text-xs font-medium text-moss-600 backdrop-blur-sm">
+            <Icon className="h-3.5 w-3.5" strokeWidth={1.8} />
+            {creature.tag}
+          </div>
         </div>
-      </div>
 
-      <div className="flex flex-1 flex-col gap-2 p-5">
-        <h3 className="font-serif text-xl text-earth-600">{creature.name}</h3>
-        <p className="text-xs italic text-earth-300">{creature.latin}</p>
-        <p className="mt-1 line-clamp-2 text-sm font-light leading-relaxed text-earth-400">
-          {creature.short}
-        </p>
-        <span className="mt-3 text-xs font-medium text-persimmon-400 transition group-hover:text-persimmon-500">
-          閱讀觀察筆記 →
-        </span>
-      </div>
-    </button>
+        <div className="flex flex-1 flex-col gap-2 p-5">
+          <h3 className="font-serif text-xl text-earth-600">{creature.name}</h3>
+          <p className="text-xs italic text-earth-300">{creature.latin}</p>
+          <p className="mt-1 line-clamp-2 text-sm font-light leading-relaxed text-earth-400">
+            {creature.short}
+          </p>
+          <span className="mt-3 text-xs font-medium text-persimmon-400 transition group-hover:text-persimmon-500">
+            閱讀觀察筆記 →
+          </span>
+        </div>
+      </button>
+    </div>
   );
 }
 
