@@ -118,7 +118,7 @@ function TableWrapper({ headers, rows }: { headers: string[]; rows: SheetRow[] }
                   key={h}
                   className="whitespace-nowrap px-5 py-3.5 text-sm font-light text-earth-500"
                 >
-                  {row[h] || <span className="text-earth-300">—</span>}
+                  {row[h] ? row[h] : <span className="text-earth-300">—</span>}
                 </td>
               ))}
             </tr>

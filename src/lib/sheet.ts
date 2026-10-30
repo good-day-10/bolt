@@ -12,6 +12,7 @@ export async function fetchSheet(): Promise<SheetRow[]> {
 
 // Minimal RFC-4180-ish CSV parser (handles quoted fields, commas, newlines)
 function parseCSV(text: string): SheetRow[] {
+  if (text.charCodeAt(0) === 0xfeff) text = text.slice(1);
   const rows: string[][] = [];
   let field = '';
   let row: string[] = [];

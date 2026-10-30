@@ -77,7 +77,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="border-t border-paper-300 bg-paper-100/98 backdrop-blur-md md:hidden">
+        <div className="border-t border-paper-300 bg-paper-100/95 backdrop-blur-md md:hidden">
           <ul className="flex flex-col py-2">
             {LINKS.map((l) => (
               <li key={l.href}>
