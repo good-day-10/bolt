@@ -11,7 +11,6 @@ import { Volume2, VolumeX } from 'lucide-react';
  */
 export default function AmbientSound() {
   const [on, setOn] = useState(false);
-  const ctxRef = useRef<AudioContext | null>(null);
   const nodesRef = useRef<{ stop: () => void } | null>(null);
 
   const start = () => {
@@ -19,7 +18,6 @@ export default function AmbientSound() {
       window.AudioContext ||
       (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
     const ctx = new AC();
-    ctxRef.current = ctx;
 
     // Low warm drone
     const drone = ctx.createOscillator();
@@ -70,7 +68,6 @@ export default function AmbientSound() {
   const stop = () => {
     nodesRef.current?.stop();
     nodesRef.current = null;
-    ctxRef.current = null;
   };
 
   const toggle = () => {

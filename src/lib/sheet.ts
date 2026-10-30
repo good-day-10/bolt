@@ -56,7 +56,7 @@ function parseCSV(text: string): SheetRow[] {
 
   if (rows.length === 0) return [];
   const headers = rows[0].map((h) => h.trim());
-  return rows.slice(1).map((r) => {
+  return rows.slice(1).filter((r) => r.some((c) => c.trim() !== '')).map((r) => {
     const obj: SheetRow = {};
     headers.forEach((h, idx) => {
       obj[h] = (r[idx] ?? '').trim();
